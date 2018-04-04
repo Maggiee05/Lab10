@@ -22,7 +22,7 @@ public class Sorting {
     private static final int TOTAL_SORT_VALUES = 100;
 
     /** Total data size. */
-    private static final int TOTAL_INTEGER_VALUES = 1000000;
+    private static final int TOTAL_INTEGER_VALUES = 500000;
 
     /**
      * Bubble sort.
@@ -32,7 +32,16 @@ public class Sorting {
      */
     @SuppressWarnings("unused")
     private static int[] bubbleSort(final int[] array) {
-        return null;
+        for (int i = 1; i < array.length; i++) {
+            for (int j = 1; j <= array.length - 1; j++) {
+                if (array[j] < array[j - 1]) {
+                    int temp = array[j];
+                    array[j] = array[j - 1];
+                    array[j - 1] = temp;
+                }
+            }
+        }
+        return array;
     }
 
     /**
@@ -43,6 +52,8 @@ public class Sorting {
      */
     @SuppressWarnings("unused")
     private static int[] selectionSort(final int[] array) {
+
+
         return null;
     }
 
@@ -54,7 +65,15 @@ public class Sorting {
      */
     @SuppressWarnings("unused")
     private static int[] mergeSort(final int[] array) {
-        return null;
+        if (array.length == 1) {
+            return array;
+        }
+
+        int midPoint = array.length / 2;
+        int[] first = Arrays.copyOfRange(array, 0, midPoint);
+        int[] second = Arrays.copyOfRange(array, midPoint, array.length);
+
+        return merge(mergeSort(first), mergeSort(second));
     }
 
     /**
